@@ -1,4 +1,4 @@
-# Copyright (c) 2019 Emanuele Lillo
+# Copyright (c) 2019 Monolix
 # 
 # This software is released under the MIT License.
 # https://opensource.org/licenses/MIT
@@ -18,7 +18,7 @@ setup(
     long_description=get_file_conts("../README.md"),
     long_description_content_type="text/markdown",
     url="http://github.com/emanuelelillo/effekt",
-    author="Emanuele Lillo",
+    author="Monolix",
     author_email="emalillo270304@gmail.com",
     license="MIT",
     packages=["effekt"]
