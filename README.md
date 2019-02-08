@@ -11,3 +11,57 @@ def saySomething():
 let.emit("/greet")
 ```
 (`let` is just an instance of the Effekt class.)
+
+Pretty unsatisfied? Watch this:
+```python
+from effekt import Effekt
+
+let = Effekt()
+
+@let.on("/welcome/main", pr=1)
+def welcome_message():
+    print("Welcome user!")
+
+@let.on("/welcome/main", pr=2)
+def ask_name():
+    print("What's your name? ")
+    name = input()
+    let.emit("/welcome/name", name=name)
+
+@let.on("/welcome/name")
+def beautiful_name(name):
+    print("Oh {}! You've got such a beautiful name!".format(name))
+
+let.emit("/welcome/main")
+```
+
+> Ok, I see, isn't this just calling functions under the hood?
+
+Yes it is. But Effekt offers the possibity to create **Extensions**, such as the official `Clock` one.
+```python
+from effekt import Effekt
+from effekt.ext.clock import Clock
+from dmotd import DMOTD
+
+let = Effekt()
+clock = Clock(let)
+dmotd = DMOTD("https://monolix.github.io/motd")
+
+@let.on("/fetch")
+def fetch_motd():
+    motd = dmotd.raw()
+    let.emit("/save", motd=motd)
+
+@let.on("/save")
+def save_to_file(motd):
+    with open("motd.txt", "w") as f:
+        f.write(motd)
+
+@let.on("/save")
+def save_to_remote_server(motd):
+    # SSH stuff...
+
+clock.tick("/fetch", relax=3600)
+```
+This script fetches the [DMOTD](https://github.com/monolix/dmotd) every hour and saves it locally and onto another remote server.
+You can broadcast a message only by assigning different functions to the same event listener.
