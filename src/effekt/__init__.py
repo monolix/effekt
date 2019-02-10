@@ -45,7 +45,7 @@ class Effekt:
             self.log("Is not", lvl="x")
             return -1
         
-        self.log("Executing all the events with kwargs")
+        self.log("Executing all the listeners with kwargs")
         for _, funcs in self.listeners[str(event)].items():
             for func in funcs:
                 func(**kwargs)
