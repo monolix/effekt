@@ -46,10 +46,8 @@ class Effekt:
             return -1
         
         self.log("Executing all the events with kwargs")
-        for key, value in self.listeners.items():
-            if key == event:
-                for _, funcs in value.items():
-                    for func in funcs:
-                        func(**kwargs)
+        for _, funcs in self.listeners[str(event)].items():
+            for func in funcs:
+                func(**kwargs)
 
         return 0
