@@ -4,13 +4,16 @@
 
 With Effekt you can enjoy the power of callbacks without any kind of struggle:
 ```python
+from effekt import Effekt
+
+let = Effekt()
+
 @let.on("/greet")
 def saySomething():
     print("Hello World!")
 
 let.emit("/greet")
 ```
-(`let` is just an instance of the Effekt class.)
 
 Pretty unsatisfied? Watch this:
 ```python
