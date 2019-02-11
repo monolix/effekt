@@ -20,11 +20,11 @@ class Scratch:
         # Placeholder for the "let" variable (Effekt instance)
         self.let = None
         
-        # Checks if the user passed the Effekt instance
+        # Check if the user passed the Effekt instance
         if let is None:
             return None
         
-        # Initializes the extension with the instance
+        # Initialize the extension with the instance
         self.init_ext(let)
     
     def __repr__(self):
@@ -33,28 +33,28 @@ class Scratch:
 
     @property
     def about(self):
-        # Returns informations about the extension
+        # Return informations about the extension
         return getattr(self, "ABOUT", "No info provided") \
             .format(AUTHOR=getattr(self, "AUTHOR", "Unknown"))
 
     def log(self, msg, lvl="*"):
-        # Does nothing til the extension is initialized
+        # Do nothing til the extension is initialized
         if not self.initialized:
             return None
         
-        # Logs (if in debug mode) with the Effekt's logger
+        # Log (if in debug mode) with the Effekt's logger
         return self.let.log(msg, "ext:{}".format(self.name), lvl)
     
     def init_ext(self, let):
-        # Assigns the instance
+        # Assign the instance
         self.let = let
         
-        # Sets his state to initialized
+        # Set the state to initialized
         self.initialized = True
         
-        # Logs the initialization
+        # Log the initialization
         self.log("Extension loaded")
 
-        # Tries to execute the ".init" method (defined by the user)
+        # Try to execute the ".init" method (defined by the user)
         try: self.init()
         except: pass
