@@ -23,7 +23,7 @@ class Effekt:
                 },
                 ...
             }
-        Every event has a priority "list" (from 0 to infinity.
+        Every event has a priority "list" (from 0 to infinity).
         Every value of the priority list has a list of callback functions.
         """
 
