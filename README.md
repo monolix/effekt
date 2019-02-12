@@ -1,6 +1,11 @@
-![effekt-logo](https://i.imgur.com/RgcL6Q1.png)
+![effekt-logo](https://i.imgur.com/f0KGccz.png)
 
 **Effekt** (`/effe:kt/`) is a **Python Framework** to make Event Driven Programming easier.
+
+## Summary
+ * [Installing](#installing)
+ * [Support](#support)
+ * [Contributing](#contributing)
 
 With Effekt you can enjoy the power of callbacks without any kind of struggle:
 ```python
@@ -68,3 +73,23 @@ clock.tick("/fetch", relax=3600)
 ```
 This script fetches the [DMOTD](https://github.com/monolix/dmotd) every hour and saves it locally and onto another remote server.
 You can broadcast a message only by assigning different functions to the same event listener.
+
+## Installing
+To install it, just clone the repo and add it to the local packages with
+```bash
+git clone https://github.com/monolix/effekt # Clone the repository
+cd effekt/src # Change working directory
+python setup.py install # Install the package
+```
+
+If you want to install it in a virtual environment, just run before installing
+
+```bash
+source <envdir>/bin/activate
+```
+
+## Support
+If you want some (moral) support or just help, you can rely on the [gitter](https://gitter.im/effekt-framework) chat.
+
+## Contributing
+If you want to contribute to this open source project, you're free to pull-request us! We'll check your submission as soon as we can.
