@@ -7,7 +7,7 @@
  * [Support](#support)
  * [Contributing](#contributing)
 
-With Effekt you can enjoy the power of callbacks without any kind of struggle:
+With Effekt you can enjoy the power of callbacks without any kind of struggle.
 ```python
 from effekt import Effekt
 
