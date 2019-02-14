@@ -21,6 +21,6 @@ setup(
     author="Monolix",
     author_email="monolix.team@gmail.com",
     license="MIT",
-    packages=["effekt"]
+    packages=["effekt"],
     zip_safe=False
 )
