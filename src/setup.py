@@ -17,7 +17,7 @@ setup(
     description="Event Driven Programming framework.",
     long_description=get_file_conts("../README.md"),
     long_description_content_type="text/markdown",
-    url="http://github.com/monolix/effekt",
+    url="https://github.com/monolix/effekt",
     author="Monolix",
     author_email="monolix.team@gmail.com",
     license="MIT",
