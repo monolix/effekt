@@ -5,6 +5,7 @@
 
 from functools import wraps
 from .errors import EventNotFound, TooLowPriority
+from .ext.scratch import Scratch
 
 class Effekt:
     def __init__(self, debug=False):
@@ -29,6 +30,9 @@ class Effekt:
 
         # Set the debug mode
         self.debug = debug
+
+        # Initialize the extensions list
+        self._extensions = []
 
         self.log("Entering debug mode", lvl="!")
     
@@ -121,5 +125,13 @@ class Effekt:
         # Execute all the callbacks
         self._exec_callbacks(event, kwargs)
 
+        # Execute all the extensions' handlers
+        for ext in self._extensions:
+            ext.on_event(event=event, **kwargs)
+
         # It's all fine - return True
         return True
+
+    def add_extension(self, ext):
+        self.log("Adding the extension to the list")
+        self._extensions.append(ext)

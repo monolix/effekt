@@ -45,9 +45,19 @@ class Scratch:
         # Log (if in debug mode) with the Effekt's logger
         return self.let.log(msg, "ext:{}".format(self.name), lvl)
     
+    # Placeholder method called when the instance emits an event
+    def on_event(self, *args, **kwargs):
+        pass
+
     def init_ext(self, let):
         # Assign the instance
         self.let = let
+        
+        # Verify if "let" is just junk
+        try:
+            let.add_extension(self)
+        except AttributeError:
+            raise TypeError("Passed a non-Effekt instance.")
         
         # Set the state to initialized
         self.initialized = True
