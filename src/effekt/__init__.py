@@ -7,7 +7,7 @@ from .config import ConfigObject
 from .errors import EventNotFound, TooLowPriority
 from .ext.scratch import Scratch
 
-class Router:
+class Effekt:
     def __init__(self, debug=False):
         # Initialize the listeners' dictionary
         self.listeners = {}
