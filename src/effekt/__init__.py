@@ -39,7 +39,7 @@ class ConfigObject:
 
         self._config.update(new_config)
 
-class Effekt:
+class Router:
     def __init__(self, debug=False):
         # Initialize the listeners' dictionary
         self.listeners = {}

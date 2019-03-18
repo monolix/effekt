@@ -32,7 +32,7 @@ class Clock(Scratch):
         try:
             # Always emit events through the instance every relax seconds
             while self.active:
-                self.let.emit(event, **kwargs)
+                self.router.emit(event, **kwargs)
                 time.sleep(relax)
         # Catch CTRL-C presses
         except KeyboardInterrupt:

@@ -11,36 +11,38 @@ With Effekt you can enjoy the power of callbacks without any kind of struggle.
 ```python
 from effekt import Effekt
 
-let = Effekt()
+router = Effekt()
 
-@let.on("/greet")
+@router.on("/greet")
 def saySomething():
     print("Hello World!")
 
-let.emit("/greet")
+router.emit("/greet")
 ```
+
+> Note: although URL patterns and names such as "router" come up really often, it has nothing related to the HTTP protocol, it's just a convention.
 
 Pretty unsatisfied? Watch this:
 ```python
 from effekt import Effekt
 
-let = Effekt()
+router = Effekt()
 
-@let.on("/welcome/main", pr=1)
+@router.on("/welcome/main", pr=1)
 def welcome_message():
     print("Welcome user!")
 
-@let.on("/welcome/main", pr=2)
+@router.on("/welcome/main", pr=2)
 def ask_name():
     print("What's your name? ")
     name = input()
-    let.emit("/welcome/name", name=name)
+    router.emit("/welcome/name", name=name)
 
-@let.on("/welcome/name")
+@router.on("/welcome/name")
 def beautiful_name(name):
     print("Oh {}! You've got such a beautiful name!".format(name))
 
-let.emit("/welcome/main")
+router.emit("/welcome/main")
 ```
 
 > Ok, I see, isn't this just calling functions under the hood?
@@ -51,21 +53,21 @@ from effekt import Effekt
 from effekt.ext.clock import Clock
 from dmotd import DMOTD
 
-let = Effekt()
-clock = Clock(let)
+router = Effekt()
+clock = Clock(router)
 dmotd = DMOTD("https://monolix.github.io/motd")
 
-@let.on("/fetch")
+@router.on("/fetch")
 def fetch_motd():
     motd = dmotd.raw()
-    let.emit("/save", motd=motd)
+    router.emit("/save", motd=motd)
 
-@let.on("/save")
+@router.on("/save")
 def save_to_file(motd):
     with open("motd.txt", "w") as f:
         f.write(motd)
 
-@let.on("/save")
+@router.on("/save")
 def save_to_remote_server(motd):
     # SSH stuff...
 

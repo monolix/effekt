@@ -4,7 +4,7 @@
 # https://opensource.org/licenses/MIT
 
 class Scratch:
-    def __init__(self, let=None):
+    def __init__(self, router=None):
         # If name not declared, set the name to the class name
         if not hasattr(self, "NAME"):
             self.name = self.__class__.__name__
@@ -17,15 +17,15 @@ class Scratch:
         # Variable used to check if the extension is initialized
         self.initialized = False
         
-        # Placeholder for the "let" variable (Effekt instance)
-        self.let = None
+        # Placeholder for the "router" variable (Effekt instance)
+        self.router = None
         
         # Check if the user passed the Effekt instance
-        if let is None:
+        if router is None:
             return None
         
         # Initialize the extension with the instance
-        self.init_ext(let)
+        self.init_ext(router)
     
     def __repr__(self):
         # Fancy formatting for representation
@@ -43,19 +43,19 @@ class Scratch:
             return None
         
         # Log (if in debug mode) with the Effekt's logger
-        return self.let.log(msg, "ext:{}".format(self.name), lvl)
+        return self.router.log(msg, "ext:{}".format(self.name), lvl)
     
     # Placeholder method called when the instance emits an event
     def on_event(self, *args, **kwargs):
         pass
 
-    def init_ext(self, let):
+    def init_ext(self, router):
         # Assign the instance
-        self.let = let
+        self.router = router
         
-        # Verify if "let" is just junk
+        # Verify if "router" is just junk
         try:
-            let.add_extension(self)
+            router.add_extension(self)
         except AttributeError:
             raise TypeError("Passed a non-Effekt instance.")
         

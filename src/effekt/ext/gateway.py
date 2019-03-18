@@ -138,7 +138,7 @@ class Gate(Scratch):
 
     def connect(self, gate=None):
         if gate is None:
-            gate = self.let.config.get("GATEWAY_CONNECTION_URI")
+            gate = self.router.config.get("GATEWAY_CONNECTION_URI")
         
         if not self._check_connection_uri(gate):
             raise TypeError("Invalid connection URI. "
@@ -196,7 +196,7 @@ class Gate(Scratch):
             payload = self._decoded["payload"]
         
         try:
-            self.let.emit(event, **payload)
+            self.router.emit(event, **payload)
             return True
         except TypeError:
             return False
