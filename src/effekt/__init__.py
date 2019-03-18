@@ -12,7 +12,6 @@ class Effekt:
         # Initialize the listeners' dictionary
         self.listeners = {}
 
-        self.config = ConfigObject()
 
         """
         This dictionary has got a quite complex structure:
@@ -29,6 +28,9 @@ class Effekt:
         Every event has a priority "list" (from 0 to infinity).
         Every value of the priority list has a list of callback functions.
         """
+
+        # Declare config object
+        self.config = ConfigObject()
 
         # Set the debug mode
         self.debug = debug
