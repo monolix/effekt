@@ -6,3 +6,4 @@ TODO
 build
 dist
 effekt.egg*
+*.log

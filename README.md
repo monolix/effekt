@@ -17,7 +17,7 @@ router = Effekt()
 def saySomething():
     print("Hello World!")
 
-router.emit("/greet")
+router.fire("/greet")
 ```
 
 > Note: although URL patterns and names such as "router" come up really often, it has nothing related to the HTTP protocol, it's just a convention.
@@ -36,13 +36,13 @@ def welcome_message():
 def ask_name():
     print("What's your name? ")
     name = input()
-    router.emit("/welcome/name", name=name)
+    router.fire("/welcome/name", name=name)
 
 @router.on("/welcome/name")
 def beautiful_name(name):
     print("Oh {}! You've got such a beautiful name!".format(name))
 
-router.emit("/welcome/main")
+router.fire("/welcome/main")
 ```
 
 > Ok, I see, isn't this just calling functions under the hood?
@@ -60,7 +60,7 @@ dmotd = DMOTD("https://monolix.github.io/motd")
 @router.on("/fetch")
 def fetch_motd():
     motd = dmotd.raw()
-    router.emit("/save", motd=motd)
+    router.fire("/save", motd=motd)
 
 @router.on("/save")
 def save_to_file(motd):
