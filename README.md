@@ -9,9 +9,9 @@
 
 With Effekt you can enjoy the power of callbacks without any kind of struggle.
 ```python
-from effekt import Effekt
+from effekt import Router
 
-router = Effekt()
+router = Router()
 
 @router.on("/greet")
 def saySomething():
@@ -24,9 +24,9 @@ router.fire("/greet")
 
 Pretty unsatisfied? Watch this:
 ```python
-from effekt import Effekt
+from effekt import Router
 
-router = Effekt()
+router = Router()
 
 @router.on("/welcome/main", pr=1)
 def welcome_message():
@@ -49,11 +49,11 @@ router.fire("/welcome/main")
 
 Yes it is. But Effekt offers the possibity to create **Extensions**, such as the official `Clock` one.
 ```python
-from effekt import Effekt
+from effekt import Router
 from effekt.ext.clock import Clock
 from dmotd import DMOTD
 
-router = Effekt()
+router = Router()
 clock = Clock(router)
 dmotd = DMOTD("https://monolix.github.io/motd")
 
